@@ -10,11 +10,11 @@ export default function Pesquisar({callBack, consultar}){
 
     const get = async() => {
         try{
-            const{data} = await Api.getVeiculosById(placa)
+            const{data} = await Api.getVeiculosByPlaca(placa)
             callBack(data)
 
         }catch(err){
-            console.log(err)
+            console.log("erro aki:" + err)
         }
     }
 
