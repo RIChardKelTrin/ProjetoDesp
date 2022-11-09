@@ -86,8 +86,7 @@ const styles = StyleSheet.create({
         borderColor: "#333",
         borderWidth: 1,
         backgroundColor: "#ff0000",
-        top:-20,
-        right:-130
+        justifyContent:"center"
     },
     botao: {
         borderColor: "#000",

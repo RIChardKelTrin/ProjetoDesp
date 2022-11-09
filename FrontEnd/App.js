@@ -6,8 +6,6 @@ import Cadastrar from './src/Veiculo/Pages/Cadastrar'
 import Listar from './src/Veiculo/Pages/Listar';
 import Editar from './src/Veiculo/Pages/Editar';
 
-LogBox.ignoreLogs(['Failed prop type: Invalid prop `textStyle` of type `array` supplied to `Cell`, expected `object`']);
-
 const Stack = createStackNavigator();
 
 export default function App(){
