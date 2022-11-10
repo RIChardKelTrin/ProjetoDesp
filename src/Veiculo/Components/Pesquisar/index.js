@@ -14,7 +14,7 @@ export default function Pesquisar({callBack, consultar}){
             callBack(data)
 
         }catch(err){
-            console.log("erro aki:" + err)
+            alert("Erro ao consultar veículo: ", err)
         }
     }
 

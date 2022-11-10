@@ -36,7 +36,7 @@ export default function Listar({ navigation }) {
             {
                 (veiculos.length > 0) ?
                     <>
-                    <FlatList style={styles.FlatList}
+                    <FlatList
                         data={veiculos}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => <Itens data={item} navigation={navigation} />}
@@ -60,10 +60,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#191919',
         justifyContent: 'center',
         alignContent: 'center',
-
-    },
-    FlatList: {
-        paddingTop:0
     },
     texto: {
         fontSize: 20,

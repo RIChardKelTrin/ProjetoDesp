@@ -93,40 +93,29 @@ export default function Itens({ data, navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        borderBottomColor:0.5,
+        borderBottomWidth:0.5
     },
     acao: {
         width: "10%",
         justifyContent: 'center',
         backgroundColor: "#fff",
-        borderColor: 'grey',
-        borderWidth: 0.2,
-        borderLeftWidth: 0,
-        borderTopWidth: 0,
         alignItems: "center"
     },
     content: {
         height:70,
         width: "90%",
         backgroundColor: "#fff",
-        borderColor: 'grey',
-        borderWidth: 0.2,
-        borderEndWidth: 0,
-        borderTopWidth: 0,
         flexDirection: "column",
         justifyContent:"center"
     },
     expandir: {
         width: "90%",
         backgroundColor: "#fff",
-        borderColor: 'grey',
-        borderWidth: 0.2,
-        borderEndWidth: 0,
-        borderTopWidth: 0,
         flexDirection: "column"
     },
     teste: {
-
         flexDirection: 'row',
         margin: 5,
     },
@@ -142,7 +131,6 @@ const styles = StyleSheet.create({
     subtitle: {
         fontSize: 12,
         textAlign: "center",
-
     }
 
 })

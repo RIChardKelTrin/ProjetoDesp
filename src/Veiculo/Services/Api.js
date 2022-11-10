@@ -1,5 +1,4 @@
-import axios, { HttpStatusCode } from "axios";
-import { object } from "prop-types";
+import axios from "axios";
 
 let url = '/veiculos';
 const api = axios.create({
@@ -32,8 +31,6 @@ const getVeiculosByPlaca = async (placa) => {
 const addVeiculos = async (veiculo) => {
     let cont = 0
 
-    console.log(veiculo[0])
-
     await api.post(url, {
         marcaModelo: veiculo[0],
         placa: veiculo[1],
@@ -46,7 +43,7 @@ const addVeiculos = async (veiculo) => {
 
         .catch((err) => {
             if (err.toString().includes("403")) {
-                alert(`Renavam já cadastrado em outro veículo!`)
+                alert(`Renavam/Placa já cadastrado em outro veículo!`)
                 cont = 1
             } else {
                 console.error("Erro ao cadastrar: " + err)
@@ -57,6 +54,9 @@ const addVeiculos = async (veiculo) => {
 }
 
 const editarVeiculo = async (veiculo) => {
+
+    let cont = 0
+
     await api.put(url + "/" + veiculo.id, {
         id: veiculo.id,
         marcaModelo: veiculo.modelo,
@@ -68,7 +68,16 @@ const editarVeiculo = async (veiculo) => {
 
     })
         .then(response => response)
-        .catch(err => console.error("Erro ao editar: " + err))
+        .catch(err => {
+            if (err.toString().includes("403")) {
+                alert(`Renavam/Placa já cadastrado em outro veículo!`)
+                cont = 1
+            } else {
+                console.error("Erro ao cadastrar: " + err)
+                cont = 3
+            }
+        })
+        return cont
 }
 
 const removerVeiculos = async (id) => {

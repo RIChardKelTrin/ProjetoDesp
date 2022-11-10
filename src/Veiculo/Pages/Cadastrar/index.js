@@ -56,13 +56,13 @@ export default function Cadastrar({ navigation }) {
   const post = async (car) => {
     let cont = 0;
     try {
+
       let values = Object.values(car).map(item => item = typeof item === "string" ?item.toUpperCase(): item);
       
-      console.log(values)
-      let cont2 = await Api.addVeiculos(values, cont);
-      cont += cont2
+      cont = await Api.addVeiculos(values, cont);
+
     } catch (err) {
-      cont++;
+
       return alert("Erro ao transmitir dados: " + err);
     }
     if(cont == 0) return navigation.navigate("Listar")
