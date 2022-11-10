@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Component, useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TextInput, TouchableHighlightBase, TouchableOpacity, View } from 'react-native';
 import Botao from '../../Components/Botao';
+import Header from '../../Components/Header';
 import Itens from '../../Components/Itens';
 import Pesquisar from '../../Components/Pesquisar';
 
@@ -29,7 +30,7 @@ export default function Listar({ navigation }) {
     return (
         <View style={styles.container}>
             <StatusBar backgroundColor={"#191919"} />
-
+            <Header/>
             <Pesquisar callBack={getVeiculos} consultar={load} />
 
             {

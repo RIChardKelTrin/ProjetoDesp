@@ -41,7 +41,7 @@ export default function Pesquisar({callBack, consultar}){
 
 const styles = StyleSheet.create({
     container:{
-        marginTop:30,
+        marginTop:20,
         justifyContent:"center",
         alignItems:'center',
         marginBottom:30

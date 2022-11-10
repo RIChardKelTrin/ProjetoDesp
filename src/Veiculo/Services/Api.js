@@ -1,4 +1,5 @@
 import axios, { HttpStatusCode } from "axios";
+import { object } from "prop-types";
 
 let url = '/veiculos';
 const api = axios.create({
@@ -28,16 +29,21 @@ const getVeiculosByPlaca = async (placa) => {
     return veiculos;
 }
 
-const addVeiculos = async (veiculo, cont) => {
+const addVeiculos = async (veiculo) => {
+    let cont = 0
+
+    console.log(veiculo[0])
+
     await api.post(url, {
-        marcaModelo: veiculo.modelo,
-        placa: veiculo.placa,
-        cor: veiculo.cor,
-        renavam: veiculo.renavam,
-        ano: veiculo.ano,
+        marcaModelo: veiculo[0],
+        placa: veiculo[1],
+        ano: veiculo[2],
+        cor: veiculo[3],
+        renavam: veiculo[4],
         fk_cliente: 1
     })
         .then(response => response)
+
         .catch((err) => {
             if (err.toString().includes("403")) {
                 alert(`Renavam já cadastrado em outro veículo!`)
