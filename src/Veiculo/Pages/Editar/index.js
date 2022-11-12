@@ -33,7 +33,8 @@ export default function Editar({ navigation, route }) {
       .max(7, "A placa deve ter no máximo 7 caracteres")
       .matches(
         /[A-Za-z]{3}[0-9]{4}|[A-Za-z]{3}[0-9]{1}[A-Za-z]{1}[0-9]{2}/,
-        "Placa inválida"),
+        "Placa inválida"
+      ),
     ano: yup.string().required("Informe o ano do veículo"),
     cor: yup
       .string()
@@ -59,6 +60,44 @@ export default function Editar({ navigation, route }) {
     resolver: yupResolver(schema),
   });
 
+  const list = [
+    {
+      nome: "modelo",
+      label: "Marca/Modelo:",
+      ph: "Ex: Volksvagem Gol",
+      maxSize: 40,
+      error: errors.modelo,
+    },
+    {
+      nome: "placa",
+      label: "Placa:",
+      ph: "Ex: ABC1234/ABC1C4",
+      maxSize: 7,
+      error: errors.placa,
+    },
+    {
+      nome: "ano",
+      label: "Ano Modelo/Fabricação:",
+      ph: "Ex: 2012/2014",
+      maxSize: 9,
+      error: errors.ano,
+    },
+    {
+      nome: "cor",
+      label: "Cor:",
+      ph: "Ex: Cinza",
+      maxSize: 40,
+      error: errors.cor,
+    },
+    {
+      nome: "renavam",
+      label: "Renavam:",
+      ph: "Ex: 14239873457",
+      maxSize: 11,
+      error: errors.renavam,
+    },
+  ];
+
   const put = async (car) => {
     let cont = 0
     try {
@@ -68,11 +107,10 @@ export default function Editar({ navigation, route }) {
       veiculo.renavam = car.renavam;
       veiculo.ano = car.ano;
       cont = await Api.editarVeiculo(veiculo);
-  
     } catch (err) {
       return console.error("Erro ao transmitir dados: " + err);
     }
-    if(cont == 0) return navigation.navigate("Listar")
+    if(cont == 0) return navigation.navigate("Listar");
   };
 
   return (
@@ -80,7 +118,33 @@ export default function Editar({ navigation, route }) {
       <StatusBar backgroundColor={"#191919"} />
       <Header />
       <View style={styles.content}>
-        <Controller
+        {list.map((item) => {
+          return (
+            <>
+              <Controller
+                control={control}
+                name={item.nome}
+                render={({ field: { onChange, value } }) => (
+                  <>
+                    <Text style={styles.label}>{item.label}</Text>
+                    <TextInput
+                      maxLength={item.maxSize}
+                      style={item.error ? styles.inputError : styles.input}
+                      placeholderTextColor={"#fff"}
+                      placeholder={item.ph}
+                      onChangeText={onChange}
+                      value={value}
+                    />
+                  </>
+                )}
+              />
+              {item.error && (
+                <Text style={styles.labelError}>{item.error?.message}</Text>
+              )}
+            </>
+          );
+        })}
+        {/* <Controller
           control={control}
           name="modelo"
           render={({ field: { onChange, value } }) => (
@@ -184,7 +248,7 @@ export default function Editar({ navigation, route }) {
         />
         {errors.renavam && (
           <Text style={styles.labelError}>{errors.renavam?.message}</Text>
-        )}
+        )} */}
 
         <View style={styles.botoes}>
           <TouchableOpacity

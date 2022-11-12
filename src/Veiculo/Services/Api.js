@@ -69,11 +69,12 @@ const editarVeiculo = async (veiculo) => {
     })
         .then(response => response)
         .catch(err => {
+
             if (err.toString().includes("403")) {
                 alert(`Renavam/Placa já cadastrado em outro veículo!`)
                 cont = 1
             } else {
-                console.error("Erro ao cadastrar: " + err)
+                console.error("Erro ao Editar: " + err)
                 cont = 3
             }
         })

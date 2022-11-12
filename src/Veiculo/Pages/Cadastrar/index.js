@@ -11,8 +11,8 @@ import Api from "../../Services/Api";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { HttpStatusCode } from "axios";
 import Header from "../../Components/Header";
+
 
 export default function Cadastrar({ navigation }) {
   const schema = yup.object({
@@ -56,47 +56,87 @@ export default function Cadastrar({ navigation }) {
   const post = async (car) => {
     let cont = 0;
     try {
+      let values = Object.values(car).map(
+        (item) => (item = typeof item === "string" ? item.toUpperCase() : item)
+      );
 
-      let values = Object.values(car).map(item => item = typeof item === "string" ?item.toUpperCase(): item);
-      
       cont = await Api.addVeiculos(values, cont);
-
     } catch (err) {
-
       return alert("Erro ao transmitir dados: " + err);
     }
-    if(cont == 0) return navigation.navigate("Listar")
+    if (cont == 0) return navigation.navigate("Listar");
   };
 
   const list = [
     {
-      name: "modelo",
-      placeHolder: "Ex: Volksvagem Gol",
+      nome: "modelo",
+      label:"Marca/Modelo:",
+      ph: "Ex: Volksvagem Gol",
+      maxSize: 40,
+      error: errors.modelo
     },
     {
-      name: "placa",
-      placeHolder: "Ex: ABC1234/ABC1C4",
+      nome: "placa",
+      label:"Placa:",
+      ph: "Ex: ABC1234/ABC1C4",
+      maxSize: 7,
+      error: errors.placa 
     },
     {
-      name: "ano",
-      placeHolder: "Ex: 2012/2014",
+      nome: "ano",
+      label:"Ano Modelo/Fabricação:",
+      ph: "Ex: 2012/2014",
+      maxSize: 9,
+      error: errors.ano
     },
     {
-      name: "cor",
-      placeHolder: "Ex: Cinza",
+      nome: "cor",
+      label:"Cor:",
+      ph: "Ex: Cinza",
+      maxSize: 40,
+      error: errors.cor
     },
     {
-      name: "renavam",
-      placeHolder: "Ex: 14239873457",
+      nome: "renavam",
+      label:"Renavam:",
+      ph: "Ex: 14239873457",
+      maxSize: 11,
+      error: errors.renavam 
     },
   ];
 
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={"#191919"} />
-      <Header/>
+      <Header />
       <View style={styles.content}>
-        <Controller
+
+      {list.map((item) => {
+        return(
+        <>
+          <Controller
+          control={control}
+          name= {item.nome}
+          render={({ field: { onChange, value } }) => (
+            <>
+              <Text style={styles.label}>{item.label}</Text>
+              <TextInput
+                maxLength={item.maxSize}
+                style={item.error ? styles.inputError : styles.input}
+                placeholderTextColor={"#fff"}
+                placeholder={item.ph}
+                onChangeText={onChange}
+                value={value}
+              />
+            </>
+          )}
+        />
+        { item.error && (
+          <Text style={styles.labelError}>{item.error?.message}</Text>
+        )}
+        </>
+      )})}
+        {/* <Controller
           control={control}
           name="modelo"
           render={({ field: { onChange, value } }) => (
@@ -200,7 +240,7 @@ export default function Cadastrar({ navigation }) {
         />
         {errors.renavam && (
           <Text style={styles.labelError}>{errors.renavam?.message}</Text>
-        )}
+        )} */}
 
         <View style={styles.botoes}>
           <TouchableOpacity
