@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StatusBar,
   StyleSheet,
@@ -53,14 +53,21 @@ export default function Cadastrar({ navigation }) {
     resolver: yupResolver(schema),
   });
 
+  const [clienteId, setClienteId] = useState(1);
+
   const post = async (car) => {
     let cont = 0;
     try {
       let values = Object.values(car).map(
         (item) => (item = typeof item === "string" ? item.toUpperCase() : item)
       );
-
-      cont = await Api.addVeiculos(values, cont);
+      veiculo.modelo = car.modelo.toUpperCase();
+      veiculo.placa = car.placa.toUpperCase();
+      veiculo.cor = car.cor.toUpperCase();
+      veiculo.renavam = car.renavam;
+      veiculo.ano = car.ano;
+      veiculo.fk_Cliente = clienteId;
+      cont = await Api.addVeiculos(values);
     } catch (err) {
       return alert("Erro ao transmitir dados: " + err);
     }
@@ -111,10 +118,10 @@ export default function Cadastrar({ navigation }) {
       <Header />
       <View style={styles.content}>
 
-      {list.map((item) => {
+      {list.map((item, index) => {
         return(
         <>
-          <Controller
+          <Controller key={index + 1}
           control={control}
           name= {item.nome}
           render={({ field: { onChange, value } }) => (

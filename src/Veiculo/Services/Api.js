@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let url = '/veiculos';
+let url = '/veiculo';
 const api = axios.create({
     baseURL: 'http://192.168.1.9:5001/api'
 })
@@ -37,7 +37,7 @@ const addVeiculos = async (veiculo) => {
         ano: veiculo[2],
         cor: veiculo[3],
         renavam: veiculo[4],
-        fk_cliente: 1
+        fk_cliente: veiculo[5]
     })
         .then(response => response)
 

@@ -39,7 +39,7 @@ export default function Listar({ navigation }) {
                     <FlatList
                         data={veiculos}
                         keyExtractor={item => item.id}
-                        renderItem={({ item }) => <Itens data={item} navigation={navigation} />}
+                        renderItem={({ item }) => <Itens key={item.id} data={item} navigation={navigation} />}
                     />
                     </>
                     :

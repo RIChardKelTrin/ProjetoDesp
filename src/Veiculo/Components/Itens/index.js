@@ -59,9 +59,9 @@ export default function Itens({ data, navigation }) {
       <View style={trocarExibicao ? styles.content : styles.expandir}>
         {trocarExibicao ? (
           <View style={styles.teste}>
-            {list1.map((item) => {
+            {list1.map((item, index) => {
               return (
-                <View style={styles.label}>
+                <View key={index + 1} style={styles.label}>
                   <Text style={styles.title}>{item.nome}</Text>
                   <Text style={styles.subtitle}>{item.valor}</Text>
                 </View>
@@ -71,9 +71,9 @@ export default function Itens({ data, navigation }) {
         ) : (
           <>
             <View style={styles.teste}>
-              {list1.map((item) => {
+              {list1.map((item, index) => {
                 return (
-                  <View style={styles.label}>
+                  <View key={index + 1} style={styles.label}>
                     <Text style={styles.title}>{item.nome}</Text>
                     <Text style={styles.subtitle}>{item.valor}</Text>
                   </View>
@@ -82,9 +82,9 @@ export default function Itens({ data, navigation }) {
             </View>
 
             <View style={styles.teste}>
-              {list2.map((item) => {
+              {list2.map((item, index) => {
                 return (
-                  <View style={styles.label}>
+                  <View key={index + 1} style={styles.label}>
                     <Text style={styles.title}>{item.nome}</Text>
                     <Text style={styles.subtitle}>{item.valor}</Text>
                   </View>
@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
+    backgroundColor:"#fff"
   },
   acao: {
     width: "10%",
@@ -117,7 +118,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   content: {
-    height: 70,
+    height: 72,
     width: "90%",
     backgroundColor: "#fff",
     flexDirection: "column",
