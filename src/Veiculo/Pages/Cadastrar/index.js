@@ -114,7 +114,6 @@ export default function Cadastrar({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={"#191919"} />
       <Header />
       <View style={styles.content}>
 

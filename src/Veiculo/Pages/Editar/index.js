@@ -115,7 +115,6 @@ export default function Editar({ navigation, route }) {
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={"#191919"} />
       <Header />
       <View style={styles.content}>
         {list.map((item) => {

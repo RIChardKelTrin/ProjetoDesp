@@ -28,8 +28,7 @@ export default function Listar({ navigation }) {
     }, [load, navigation])
 
     return (
-        <View style={styles.container}>
-            <StatusBar backgroundColor={"#191919"} />
+        <View style={styles.container}> 
             <Header/>
             <Pesquisar callBack={getVeiculos} consultar={load} />
 

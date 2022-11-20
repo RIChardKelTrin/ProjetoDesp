@@ -1,11 +1,14 @@
-import { StyleSheet, Text, View } from "react-native"
+import { StatusBar, StyleSheet, Text, View } from "react-native"
 import * as Animatable from 'react-native-animatable'
 
 export default function Header() {
     return (
+        <>
+        <StatusBar backgroundColor={"#191919"} />
         <View style={styles.container}>
             <View delay={600} animation="fadeInUp"><Text style={styles.textLogo}>DESPFÁCIL</Text></View>
         </View>
+        </>
     )
 }
 
