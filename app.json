@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "DespachantesApp",
+    "slug": "DespachantesApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
