@@ -32,12 +32,12 @@ const addVeiculos = async (veiculo) => {
     let cont = 0
 
     await api.post(url, {
-        marcaModelo: veiculo[0],
-        placa: veiculo[1],
-        ano: veiculo[2],
-        cor: veiculo[3],
-        renavam: veiculo[4],
-        fk_cliente: veiculo[5]
+        marcaModelo: veiculo.modelo,
+        placa: veiculo.placa,
+        ano: veiculo.ano,
+        cor: veiculo.cor,
+        renavam: veiculo.renavam,
+        fk_cliente: veiculo.fk_Cliente
     })
         .then(response => response)
 

@@ -58,16 +58,13 @@ export default function Cadastrar({ navigation }) {
   const post = async (car) => {
     let cont = 0;
     try {
-      let values = Object.values(car).map(
-        (item) => (item = typeof item === "string" ? item.toUpperCase() : item)
-      );
-      veiculo.modelo = car.modelo.toUpperCase();
-      veiculo.placa = car.placa.toUpperCase();
-      veiculo.cor = car.cor.toUpperCase();
-      veiculo.renavam = car.renavam;
-      veiculo.ano = car.ano;
-      veiculo.fk_Cliente = clienteId;
-      cont = await Api.addVeiculos(values);
+      car.modelo = car.modelo.toUpperCase();
+      car.placa = car.placa.toUpperCase();
+      car.cor = car.cor.toUpperCase();
+      car.renavam = car.renavam;
+      car.ano = car.ano;
+      car.fk_Cliente = clienteId;
+      cont = await Api.addVeiculos(car);
     } catch (err) {
       return alert("Erro ao transmitir dados: " + err);
     }

@@ -5,13 +5,21 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Cadastrar from './src/Veiculo/Pages/Cadastrar'
 import Listar from './src/Veiculo/Pages/Listar';
 import Editar from './src/Veiculo/Pages/Editar';
+import Home from './src/VeiculoServico/Pages/Home';
 
 const Stack = createStackNavigator();
 
 export default function App(){
   return(
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Listar'>
+      <Stack.Navigator initialRouteName='Home'>
+      <Stack.Screen 
+        name="Home" 
+        component={Home}
+        options={{
+          headerShown:false
+        }}
+        />
         <Stack.Screen 
         name="Listar" 
         component={Listar}

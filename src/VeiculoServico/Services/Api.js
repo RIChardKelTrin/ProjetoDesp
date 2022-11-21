@@ -6,13 +6,14 @@ const api = axios.create({
 })
 
 const getSvById = async (id) => {
-    let veiculos;
-
-    veiculos = await api.get(url + "/ " + id)
+    let id2 = id
+    if(id2 == "") id2 = -1
+    let sv;
+    sv = await api.get(url + "/situacao/" + id2)
     .then(response => response)
     .catch(erro => console.log("Erro ao consultar SV: " + erro))
 
-    return veiculos
+    return sv
 }
 
 export default { getSvById }
