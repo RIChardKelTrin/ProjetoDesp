@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { ActivityIndicator, FlatList, StyleSheet, Text, View } from "react-native";
 import Header from "../../../Veiculo/Components/Header";
 import Itens from "../../Components/Itens";
 import Search from "../../Components/Search";
@@ -7,21 +7,33 @@ import Search from "../../Components/Search";
 export default function Home(){
     
     const[SVs, setSVs] = useState([]);
+    const [load, setLoad] = useState(true)
+    const [semResposta, setSemResposta] = useState()
 
     const getSVs = (itens) => {
-        setSVs(itens)
+        setSemResposta(true)
+        setSVs([])
+        setTimeout(() => {setSVs(itens), setSemResposta(false)}, 1000)
+        
     }
     
-
     return(
         <View style={styles.container}>
             <Header/>
             <Search callback={getSVs}/>
+            {(SVs.length > 0) ?
             <FlatList
             data={SVs}
             keyExtractor={item => item.id}
             renderItem={({item}) => <Itens data={item}/>}
             />
+            :
+            semResposta ?
+            <ActivityIndicator size={40} color="#ff0000"/>
+            :
+            <Text style={styles.texto}>Nenhum SV encontrado!</Text>
+
+            }
         </View>
     )
 }
@@ -29,8 +41,13 @@ export default function Home(){
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        justifyContent:"center",
         alignContent:"center",
-        backgroundColor:"#191919"
+        backgroundColor:"#191919",
+        alignContent:"center"
+    } ,   
+    texto: {
+        fontSize: 20,
+        textAlign: 'center',
+        color: '#f70b17'
     }
 })

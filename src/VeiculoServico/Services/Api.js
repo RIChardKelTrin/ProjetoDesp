@@ -5,15 +5,28 @@ const api = axios.create({
     baseURL: 'http://192.168.1.9:5001/api'
 })
 
-const getSvById = async (id) => {
-    let id2 = id
-    if(id2 == "") id2 = -1
+const getSvById = async (nomeSituacao) => {
+
     let sv;
-    sv = await api.get(url + "/situacao/" + id2)
+    sv = await api.get(url + "/situacao", {params:{
+        nomeSituacao
+    }})
     .then(response => response)
     .catch(erro => console.log("Erro ao consultar SV: " + erro))
 
     return sv
 }
 
-export default { getSvById }
+const EditaSituacaoSV = async (sv) => {
+    await api.put(url + "/" + sv.id, {
+        id: sv.id,
+        fk_Servico: sv.fk_Servico,
+        fk_Situacao: sv.fk_Situacao,
+        fk_Veiculo: sv.fk_Veiculo,
+        dataDeEntrada: sv.dataDeEntrada
+    })
+    .then(response => response)
+    .catch(erro => console.log("Erro ao editar situacao do sv: " + erro))
+}
+
+export default { getSvById, EditaSituacaoSV }
