@@ -34,16 +34,14 @@ export default function Listar({ navigation }) {
 
             {
                 (veiculos.length > 0) ?
-                    <>
                     <FlatList
                         data={veiculos}
                         keyExtractor={item => item.id}
                         renderItem={({ item }) => <Itens key={item.id} data={item} navigation={navigation} />}
                     />
-                    </>
                     :
                     semResposta ?
-                     <ActivityIndicator size={40} color="#f70b17"/>
+                     <ActivityIndicator size={40} color="#ff0000"/>
                     :
                     <Text style={styles.texto}>Nenhum Veículo encontrado!</Text>
             }
