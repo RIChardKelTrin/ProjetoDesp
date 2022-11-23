@@ -3,6 +3,8 @@
 .DS_Store
 ./ios
 ./android
+android/
+ios/
 .buckconfig
 # Xcode
 #
