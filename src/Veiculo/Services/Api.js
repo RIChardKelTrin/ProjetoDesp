@@ -2,7 +2,7 @@ import axios from "axios";
 
 let url = '/veiculo';
 const api = axios.create({
-    baseURL: 'http://192.168.1.9:5001/api'
+    baseURL: 'http://192.168.15.46:5001/api'
 })
 
 const getVeiculosById = async (id) => {

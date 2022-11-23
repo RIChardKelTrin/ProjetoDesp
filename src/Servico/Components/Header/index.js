@@ -14,19 +14,20 @@ export default function Header() {
 }
 
 const styles = StyleSheet.create({  
-  container: {
+  container:{
+    flex: 0,
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 20,
-  },
-  textLogo: {
-    fontSize: 30,
+    marginTop:'5%'
+},
+textLogo: {
+    fontSize: 50,
     fontWeight: "bold",
     color: "#E0E0E0",
     borderTopWidth: 3,
     borderBottomWidth: 3,
     borderTopColor: "#f00",
     borderBottomColor: "#f00",
-    padding: 5,
-  },
+    padding: 5
+  }
 });

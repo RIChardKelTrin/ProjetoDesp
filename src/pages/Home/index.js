@@ -25,6 +25,11 @@ export default function Home() {
         </TouchableOpacity>
       </View>
       <View>
+      <TouchableOpacity style={styles.buttonTouch} onPress={() => navigation.navigate('VeiculoServico')}>
+          <Text style={styles.TextTitulo}><MaterialCommunityIcons name="car-key" size={22} color="white" /> CONSULTAR SITUAÇÃO SERVIÇO</Text>
+        </TouchableOpacity>
+      </View>
+      <View>
         <TouchableOpacity
           activeOpacity={0.5} onPress={() => { Linking.openURL('mailto:keltren@hotmail.com.br') }} style={styles.TouchSuport} >
           <View style={styles.styleiconview} />
@@ -52,14 +57,14 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 12,
     fontWeight: "bold",
-    marginTop: '-60%',
+    marginTop: '-20%',
 
   },
   Cadastrar: {
-    marginTop: '30%',
+    marginTop: '20%',
     backgroundColor: "#ff0000",
     width: '80%',
-    height: '20%',
+    height: '25%',
     borderRadius: 4,
     aligndatas: "center",
     justifyContent: "center",
@@ -75,7 +80,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   ViewButton: {
-    marginTop: '-50%',
+    marginTop: '10%',
   },
   textSuport: {
     marginTop: '5%',
@@ -90,7 +95,21 @@ const styles = StyleSheet.create({
     color: "#e0e0e0",
     fontSize: 10,
     justifyContent: 'center',
-  }
+  },
+  buttonTouch:{
+    borderTopWidth: 2,
+    borderBottomWidth: 2,
+    marginBottom: '5%',
+    backgroundColor: "#ff0000",
+    borderRadius: 8,
+    aligndatas: "center",
+    justifyContent: "center",
+    position: "relative",
+    padding: '5%',
+    borderWidth: 0.8,
+    borderColor: "white" 
+
+  },
 
 
 });

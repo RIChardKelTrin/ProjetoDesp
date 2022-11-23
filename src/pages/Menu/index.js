@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet} from 'react-native';
+import Servico from "../../Servico/index";
 import Cliente from "../../Cliente/index";
+import Veiculos from "../../Veiculo/index";
 import Logout from "../Menu/logout"
 import Home from "../Home/index";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -28,6 +30,21 @@ export default function Menu() {
                   component={Cliente}
                   options={{ 
                     tabBarIcon: () =>{return <Ionicons name="person" size={24} color="black" />}
+                  }}
+                  />
+               <Screen       
+                  name="Veiculos"
+                  component={Veiculos}
+                  options={{
+                    tabBarIcon: () =>{return <MaterialCommunityIcons name="car-multiple" size={33} color="black" />}
+                  }}
+                  />
+              
+                   <Screen       
+                  name="Serviços"
+                  component={Servico}
+                  options={{
+                    tabBarIcon: () =>{return <MaterialCommunityIcons name="file-document-multiple" size={26} color="black" />}
                   }}
                   />
                    <Screen       

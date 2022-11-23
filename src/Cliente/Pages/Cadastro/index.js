@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from "react";
 import { ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View, KeyboardAvoidingView } from "react-native";
-import enviar from "../Services/api";
+import enviar from "../../Services/api";
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native';
@@ -8,12 +8,11 @@ import * as yup from 'yup';
 import * as Animatable from 'react-native-animatable';
 
 
-export default function Editar() {
+export default function Cadastro() {
 
     const navigation = useNavigation();
 
     const schema = yup.object({
-        id: yup.string().required("Digite o ID do cliente").min(1, "O ID deve ter no mínimo 1 caracteres"),
         nome: yup.string().required("Digite seu nome completo!").min(6, "O nome deve ter no mínimo 6 caracteres").matches((/[A-Z][a-z]* [A-Z][a-z]*/), "Nome fora do formato, coloque ao menos o nome e sobrenome!").max(50, "O nome deve ter no máximo 40 caracteres"),
         rg: yup.string().required("Digite seu RG!").min(4, "O rg deve ter no mínimo 4 caracteres").max(15, "O rg deve ter no máximo 15 caracteres"),
         cpf: yup.string().required("Digite seu CPF!").min(11, "O CPF deve ter no 11 caracteres"),
@@ -25,22 +24,34 @@ export default function Editar() {
         resolver: yupResolver(schema)
     })
 
-    async function SalvarEdicao(cliente) {
-      try {
-        console.log(cliente)
-        await enviar.put('/Cliente/' + cliente.id,
-          {
-            id: cliente.id,
-            nome: cliente.nome,
-            cpf: cliente.cpf,
-            rg: cliente.rg,
-            endereco: cliente.endereco,
-            telefone: cliente.telefone
-  
-          });
-          alert("Cliente editado com sucesso!")
-        }
-      catch (erro) { console.log("Erro: " + erro) +  alert("Cliente não editado, verifique os campos!")}
+
+    const AddCliente = async (cliente) => {
+                let cont = 0;
+                await enviar.post("/Cliente", {
+                nome: cliente.nome,
+                cpf: cliente.cpf,
+                rg: cliente.rg,
+                endereco: cliente.endereco,
+                telefone: cliente.telefone
+            })
+            .then(response=>response) 
+            .catch(erro => {
+                if (erro.toString().includes("403")) {
+                    console.log("Erro CPF Duplicado")
+                    cont++
+                    return alert("CPF já cadastrado em outro cliente!")
+                } else {
+                    cont++
+                    console.log("Erro na conexão")
+                    return alert("Erro ao cadastrar: " + erro)
+
+                }
+            })
+            if(cont == 0) {
+                console.log(cont)
+                console.log("Cadastrado com sucesso!"), alert("Cliente Cadastrado com sucesso!")
+                return navigation.navigate("Menu");
+            }
     }
 
     return (
@@ -51,33 +62,11 @@ export default function Editar() {
             </View>
 
             <View style={styles.viewtextcadastrar}>
-            <Text style={styles.textcadastrar}>EDITAR CLIENTE</Text>
+            <Text style={styles.textcadastrar}>CADASTRAR CLIENTE</Text>
             </View>
 
             <View style={styles.content}>
-
             <ScrollView>
-
-            <Controller
-                    control={control}
-                    name="id"
-                    render={({ field: { onChange, value } }) => (
-                        <>
-                            <Text style={styles.label}>Qual o ID do cliente que você deseja editar:</Text>
-                            <TextInput
-                                keyboardType="numeric"
-                                style={errors.id ? styles.inputError : styles.input}
-                                placeholderTextColor={"#fff"}
-                                placeholder={"Ex: 1"}
-                                onChangeText={onChange}
-                                value={value}
-                            />
-                        </>
-                    )}
-                />
-                {errors.id && <Text style={styles.labelError}>{errors.id?.message}</Text>}
-                <Text style={styles.textTitulo2}> DIGITE OS NOVOS VALORES:</Text>
-
                 <Controller
                     control={control}
                     name="nome"
@@ -177,16 +166,14 @@ export default function Editar() {
                 </ScrollView>
 
                 <View style={styles.botoes}>
-        <TouchableOpacity style={styles.enviar} onPress={() => navigation.navigate('Menu')}>
-          <Text style={styles.nomeEnviar}>Voltar</Text>
-        </TouchableOpacity>
+                    <TouchableOpacity style={styles.enviar} onPress={() => navigation.navigate('Menu')}>
+                        <Text style={styles.nomeEnviar}>Voltar</Text>
+                    </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.enviar} onPress={handleSubmit(SalvarEdicao)}>
+                    <TouchableOpacity style={styles.enviar} onPress={handleSubmit(AddCliente)}>
                         <Text style={styles.nomeEnviar}>Salvar</Text>
                     </TouchableOpacity>
                 </View>
-
-                
 
             </View>
         </View>
@@ -208,19 +195,19 @@ const styles = StyleSheet.create({
     input: {
         zIndex: 99,
         width: "100%",
-        height: '3%',
+        height: 40,
         borderColor: '#fff',
         borderBottomWidth: 0.5,
-        marginEnd: 5,
-        paddingStart: 5,
+        marginEnd: 10,
+        paddingStart: 10,
         paddingEnd: 10,
-        marginBottom: '3%',
+        marginBottom: 10,
         color: "#fff"
     },
     inputError: {
         zIndex: 99,
         width: "100%",
-        height: '3%',
+        height: '4%',
         borderColor: '#ff0000',
         borderBottomWidth: 0.5,
         marginEnd: 10,
@@ -252,7 +239,7 @@ const styles = StyleSheet.create({
     botoes: {
         flexDirection: "row",
         justifyContent: "space-evenly",
-        marginTop: '2%'
+        marginTop: 50
     },
     labelError: {
         alignSelf: 'flex-start',
@@ -274,7 +261,7 @@ const styles = StyleSheet.create({
 
     },
     textLogo: {
-        fontSize: 30,
+        fontSize: 50,
         fontWeight: "bold",
         color: "#E0E0E0",
         borderTopWidth: 5,
@@ -285,7 +272,7 @@ const styles = StyleSheet.create({
     },
     textcadastrar:{
         color: "#fff",
-        fontSize: 20,
+        fontSize: 25,
         marginBottom: '-30%',
         marginTop: '-40%',
         justifyContent: "center",
@@ -300,18 +287,5 @@ const styles = StyleSheet.create({
         marginTop: 10,
 
     },
-    textTitulo2:{
-        fontSize: 15,
-        justifyContent: "center",
-        alignItems: "center",
-        padding: 2,
-        paddingBottom: 4,
-        marginTop: 10,
-        borderBottomWidth: 1,
-        borderBottomColor: "#E0E0E0",
-        color: 'white',
-        textAlign: 'center'
-
-    }
     
 })

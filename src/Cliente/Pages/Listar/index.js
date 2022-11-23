@@ -1,9 +1,9 @@
 import React, { useState, useEffect, Button, ScrollView, StatusBar } from "react";
 import { FlatList, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import enviar from '../Services/api';
-import Header from '../Components/Header'
+import enviar from '../../../Services/api';
+import Header from '../../Components/Header'
 import { Ionicons } from '@expo/vector-icons';
-import Cabecalho from "../Components/Cabecalho";
+import Cabecalho from "../../Components/Cabecalho";
 
 
 
