@@ -10,7 +10,7 @@ import {
   Alert,
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
-import api from "../../Services/api";
+import api from "../../../Services/api";
 import Header from "../../Components/Header";
 
 export default function Cadastrar({ navigation }) {

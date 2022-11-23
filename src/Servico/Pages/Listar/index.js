@@ -1,6 +1,6 @@
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Header from "../../Components/Header";
-import api from "../../Services/api";
+import api from "../../../Services/api";
 
 export default function Listar({ navigation }) {
   return (

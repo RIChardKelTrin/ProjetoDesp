@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import api from "../../../Services/api";
 import {
   Button,
   StyleSheet,
@@ -5,12 +7,14 @@ import {
   TouchableOpacity,
   View,
   TextInput,
+  FlatList,
 } from "react-native";
-import { useForm, Controller } from "react-hook-form";
-import api from "../../Services/api";
+import Item from "../../Components/item";
 import Header from "../../Components/Header";
-import { NumberSchema } from "yup";
-export default function Editar({ navigation }) {
+
+import { useForm, Controller } from "react-hook-form";
+
+export default function Deletar({ navigation }) {
   const {
     control,
     handleSubmit,
@@ -18,17 +22,15 @@ export default function Editar({ navigation }) {
   } = useForm({
     defaultValues: {
       id: "",
-      nome: "",
-      valor: "",
     },
   });
 
-  const handleSignIn = async (servico) => {
-    console.log(servico);
+  const handleSignIn = async (data) => {
+    console.log(data);
     try {
-      await api.EditServico(servico);
+      await api.DeleteServico(data.id);
     } catch (erro) {
-      console.log("Erro ao Editar ", erro);
+      console.log("Erro Ao Deletar ", erro);
     }
   };
 
@@ -43,48 +45,14 @@ export default function Editar({ navigation }) {
           }}
           render={({ field: { onChange, value } }) => (
             <TextInput
-              placeholder="ID"
-              style={styles.borda}
+              placeholder="Digite ID Que Deseja Deletar"
+              style={styles.borda} // dps troca o styles
               onChangeText={onChange}
               value={value}
               placeholderTextColor={"#fff"}
             />
           )}
           name="id"
-        />
-
-        <Controller
-          control={control}
-          rules={{
-            required: true,
-          }}
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              placeholder="Nome Do Serviço"
-              style={styles.borda}
-              onChangeText={onChange}
-              value={value}
-              placeholderTextColor={"#fff"}
-            />
-          )}
-          name="nome"
-        />
-
-        <Controller
-          control={control}
-          rules={{
-            required: true,
-          }}
-          render={({ field: { onChange, value } }) => (
-            <TextInput
-              placeholder="Valor Do Serviço"
-              style={styles.borda}
-              onChangeText={onChange}
-              value={value}
-              placeholderTextColor={"#fff"}
-            />
-          )}
-          name="valor"
         />
       </View>
 
@@ -135,8 +103,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "center",
   },
-
-  input: {},
 
   borda: {
     color: "#fff",
