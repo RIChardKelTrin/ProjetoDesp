@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Button, StatusBar, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Header from '../Pages/Components/Header';
-import Marca from '../Pages/../Cliente/Components/Marca'
+import Header from '../pages/Components/Header';
+import Marca from '../Servico/Components/Marca'
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
