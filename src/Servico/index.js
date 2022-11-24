@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Button, StatusBar, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Header from '../pages/Components/Header';
+import Header from '../Servico/Components/Header';
 import Marca from '../Servico/Components/Marca'
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -22,9 +22,6 @@ export default function Servico() {
       </View>
 
       <View style={styles.container}>
-      <TouchableOpacity style={styles.buttonTouch} onPress={() => navigation.navigate('CadastrarServico')}>
-          <Text style={styles.TextTitulo}><MaterialCommunityIcons name="file-plus" size={22} color="White" />  CADASTRAR SERVIÇO</Text>
-        </TouchableOpacity>
         <TouchableOpacity style={styles.buttonTouch} onPress={() => navigation.navigate('ListarsServico')}>
           <Text style={styles.TextTitulo}><FontAwesome5 name="list-alt" size={18} color="white" /> LISTA DE SERVIÇOS</Text>
         </TouchableOpacity>

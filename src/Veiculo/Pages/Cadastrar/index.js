@@ -203,24 +203,24 @@ const styles = StyleSheet.create({
   },
   enviar: {
     backgroundColor: "#ff0000",
-    width: 65,
-    height: 35,
-    borderRadius: 5,
+    width: '35%',
+    height: '35%',
+    borderRadius: 4,
     aligndatas: "center",
     justifyContent: "center",
     position: "relative",
-  },
-  nomeEnviar: {
+},
+nomeEnviar: {
     fontSize: 20,
     color: "#fff",
     textAlign: "center",
-    fontWeight: "bold",
-  },
+    fontWeight: "bold"
+},
   botoes: {
     flexDirection: "row",
     justifyContent: "space-evenly",
-    marginTop: 50,
-  },
+    marginTop: 50
+},
   labelError: {
     alignSelf: "flex-start",
     color: "#ff0000",

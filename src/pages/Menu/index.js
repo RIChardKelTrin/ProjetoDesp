@@ -2,12 +2,13 @@ import React from "react";
 import { StyleSheet} from 'react-native';
 import Servico from "../../Servico/index";
 import Cliente from "../../Cliente/index";
-import ListarVeiculo from "../../Veiculo/Pages/Listar";
+import Veiculos from "../../Veiculo";
 import Logout from "./logout"
 import Home from "../Home/index";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
@@ -36,7 +37,7 @@ export default function Menu() {
                   />
                <Screen       
                   name="Veiculo"
-                  component={ListarVeiculo}
+                  component={Veiculos}
                   options={{
                     tabBarIcon: () =>{return <MaterialCommunityIcons name="car-multiple" size={33} color="black" />}
                     ,headerShown: false

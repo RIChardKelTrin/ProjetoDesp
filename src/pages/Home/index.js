@@ -20,13 +20,16 @@ export default function Home() {
         <Text style={styles.text1}>Usuário logado! Utilize todas as funcionalidades do Sistema.</Text>
       </View>
       <View style={styles.ViewButton}>
-        <TouchableOpacity style={styles.Cadastrar} onPress={() => navigation.navigate('CadastroCliente')}>
-          <Text style={styles.TextTitulo}><Ionicons name="add" size={18} color="white" />INICIAR UM NOVO SERVIÇO</Text>
+        <TouchableOpacity style={styles.buttonTouch} onPress={() => navigation.navigate('CadastroCliente')}>
+          <Text style={styles.TextTitulo}><Ionicons name="add" size={18} color="white" />INICIAR UM NOVO PROCESSO</Text>
         </TouchableOpacity>
-      </View>
-      <View>
-      <TouchableOpacity style={styles.buttonTouch} onPress={() => navigation.navigate('VeiculoServico')}>
-          <Text style={styles.TextTitulo}><MaterialCommunityIcons name="car-key" size={22} color="white" /> CONSULTAR SITUAÇÃO SERVIÇO</Text>
+
+        <TouchableOpacity style={styles.buttonTouch} onPress={() => navigation.navigate('CadastrarServico')}>
+          <Text style={styles.TextTitulo}><MaterialCommunityIcons name="file-plus" size={22} color="White" />CADASTRE SEUS SERVIÇOS</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.buttonTouch} onPress={() => navigation.navigate('VeiculoServico')}>
+          <Text style={styles.TextTitulo}><MaterialCommunityIcons name="car-key" size={22} color="white" />CONSULTAR SITUAÇÃO SERVIÇO</Text>
         </TouchableOpacity>
       </View>
       <View>
