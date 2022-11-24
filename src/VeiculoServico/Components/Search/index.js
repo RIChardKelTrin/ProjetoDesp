@@ -19,12 +19,15 @@ export default function Search({ callback, loadEdit }) {
   },[loadEdit])
 
   const get = async () => {
+    let response
+    let cont = 0
     try {
-      const { data } = await Api.getSvById(situacao);
-      callback(data);
+      response = await Api.getSvById(situacao);
     } catch (erro) {
       console.log("Não foi possível consultar:" + erro);
+      cont++
     }
+    if( cont == 0 && typeof response.data == "object")callback(response.data);
   };
 
   const situacoes = [
