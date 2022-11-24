@@ -39,6 +39,7 @@ export default function Editar() {
   
           });
           alert("Cliente editado com sucesso!")
+          return navigation.navigate("Menu")
         }
       catch (erro) { console.log("Erro: " + erro) +  alert("Cliente não editado, verifique os campos!")}
     }

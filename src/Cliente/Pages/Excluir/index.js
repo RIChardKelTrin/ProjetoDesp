@@ -36,6 +36,7 @@ export default function Excluir() {
             if(cont == 0) {
                 console.log(cont)
                 console.log("Cliente excluído com sucesso!"), alert("Cliente excluído com sucesso!")
+                return navigation.navigate("Menu")
             }
     }
 
