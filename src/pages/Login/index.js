@@ -47,9 +47,9 @@ export default function Login() {
         <Animatable.View delay={600} animation="fadeInUp"><Text style={styles.textLogo2}>"FÁCIL E PRÁTICO"</Text></Animatable.View>
       </View>
 
-      <TextInput placeholder='Digite seu ID' style={styles.TextInput} onChangeText={(value) => setId(value)} />
+      <TextInput keyboardType="numeric" placeholder='Digite seu ID' style={styles.TextInput} onChangeText={(value) => setId(value)} />
       <TextInput placeholder='Digite seu usuário' style={styles.TextInput} onChangeText={(value) => setUsuario(value)} />
-      <TextInput placeholder='Digite sua senha' style={styles.TextInput} onChangeText={(value) => setSenha(value)} />
+      <TextInput keyboardType="numeric" placeholder='Digite sua senha' style={styles.TextInput} onChangeText={(value) => setSenha(value)} />
 
       <TouchableOpacity style={styles.button} onPress={() => Entrar()}>
         <Text style={styles.buttonentrar}><MaterialCommunityIcons name="home-import-outline" size={20} color="#e0e0e0" /> Entrar</Text>
