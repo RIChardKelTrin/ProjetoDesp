@@ -38,6 +38,7 @@ export default function Routes() {
                 name="Menu"
                 component={Menu}
                 options={{ headerShown: false }}
+                
             />
             <Stack.Screen
                 name="Home"

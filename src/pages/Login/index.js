@@ -34,7 +34,6 @@ export default function Login() {
         }
     })
     if(cont == 0) {
-        console.log(cont)
         console.log("Acesso permitido!"), alert("Bem vindo despachante!")
         return navigation.navigate("Menu")
     }
