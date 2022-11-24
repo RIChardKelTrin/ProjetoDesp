@@ -20,7 +20,8 @@ export default function Cadastrar({ navigation, route }) {
       .string()
       .required("Informe a marca/modelo do veículo")
       .min(5, "marca/modelo deve ter no mínimo 5 caracteres")
-      .max(40, "marca/modelo deve ter no máximo 40 caracteres"),
+      .max(40, "marca/modelo deve ter no máximo 40 caracteres")
+      .matches((/[A-Z][a-z]* [A-Z][a-z]*/), "As primeiras letras das palavras devem ser maiúscula"),
     placa: yup
       .string()
       .required("Informa a placa do veículo")
@@ -54,20 +55,16 @@ export default function Cadastrar({ navigation, route }) {
   });
 
 
-  useEffect(() =>{
-    console.log(cliente)
-  },[cliente])
+  // useEffect(() =>{
+  //   console.log(cliente)
+  // },[cliente])
   const [cliente, setCliente] = useState(route.params.cliente);
 
   const post = async (car) => {
     let cont = 0;
     try {
-      car.modelo = car.modelo.toUpperCase();
-      car.placa = car.placa.toUpperCase();
-      car.cor = car.cor.toUpperCase();
-      car.renavam = car.renavam;
-      car.ano = car.ano;
-      car.fk_Cliente = cliente.id;
+      car.fk_Cliente = cliente
+      console.log(car)
       cont = await Api.addVeiculos(car);
     } catch (err) {
       return alert("Erro ao transmitir dados: " + err);
@@ -147,7 +144,7 @@ export default function Cadastrar({ navigation, route }) {
         <View style={styles.botoes}>
           <TouchableOpacity
             style={styles.enviar}
-            onPress={() => navigation.navigate("ListarVeiculos")}
+            onPress={() => navigation.navigate("CadastroCliente")}
           >
             <Text style={styles.nomeEnviar}>Voltar</Text>
           </TouchableOpacity>

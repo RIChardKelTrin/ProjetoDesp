@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet} from 'react-native';
 import Servico from "../../Servico/index";
 import Cliente from "../../Cliente/index";
-import Veiculos from "../../Veiculo/index";
+import ListarVeiculo from "../../Veiculo/Pages/Listar";
 import Logout from "./logout"
 import Home from "../Home/index";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -23,6 +23,7 @@ export default function Menu() {
                   component={Home}
                   options={{ 
                     tabBarIcon: () =>{return <Ionicons name="home" size={24} color="black" />}
+                    ,headerShown: false
                   }}
                   />
                 <Screen       
@@ -30,13 +31,15 @@ export default function Menu() {
                   component={Cliente}
                   options={{ 
                     tabBarIcon: () =>{return <Ionicons name="person" size={24} color="black" />}
+                    ,headerShown: false
                   }}
                   />
                <Screen       
-                  name="Veiculos"
-                  component={Veiculos}
+                  name="Veiculo"
+                  component={ListarVeiculo}
                   options={{
                     tabBarIcon: () =>{return <MaterialCommunityIcons name="car-multiple" size={33} color="black" />}
+                    ,headerShown: false
                   }}
                   />
               
@@ -45,6 +48,7 @@ export default function Menu() {
                   component={Servico}
                   options={{
                     tabBarIcon: () =>{return <MaterialCommunityIcons name="file-document-multiple" size={26} color="black" />}
+                    ,headerShown: false
                   }}
                   />
                    <Screen       
@@ -52,6 +56,7 @@ export default function Menu() {
                   component={Logout}
                   options={{}={
                     tabBarIcon: () =>{return <Ionicons name="md-exit-sharp" size={35} color="black" />}
+                    ,headerShown: false
                   }}
                   />
                   </Navigator>
@@ -63,6 +68,7 @@ export default function Menu() {
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'flex-start',
+    backgroundColor:"pink"
   },
 
 });

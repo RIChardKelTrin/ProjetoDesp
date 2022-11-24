@@ -28,7 +28,7 @@ export default function Cadastrar({ navigation }) {
     } catch (erro) {
       console.log("erro no formulário: ", erro);
     }
-    if(cont == 0 ) navigation.navigate("Listar")
+    if(cont == 0 ) navigation.navigate("Menu")
   }
 
   return (
@@ -67,7 +67,7 @@ export default function Cadastrar({ navigation }) {
       <View style={styles.botoes}>
         <TouchableOpacity
           style={styles.Botao}
-          onPress={() => navigation.navigate("Listar")}
+          onPress={() => navigation.navigate("Menu")}
         >
           <Text style={styles.texto}>Voltar</Text>
         </TouchableOpacity>

@@ -15,7 +15,7 @@ export default function Listar({ navigation }) {
 
       <TouchableOpacity
         style={styles.botao}
-        onPress={() => navigation.navigate("Cadastrar")}
+        onPress={() => navigation.navigate("CadastrarServico")}
       >
         <Text style={styles.texto}>Cadastrar</Text>
       </TouchableOpacity>
@@ -23,7 +23,7 @@ export default function Listar({ navigation }) {
       
       <TouchableOpacity
         style={styles.botao}
-        onPress={() => navigation.navigate("Listars")}>
+        onPress={() => navigation.navigate("ListarsServico")}>
         <Text style={styles.texto}>Listar</Text>
     </TouchableOpacity>
     

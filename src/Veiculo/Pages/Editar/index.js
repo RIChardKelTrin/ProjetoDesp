@@ -25,7 +25,8 @@ export default function Editar({ navigation, route }) {
     modelo: yup
       .string()
       .required("Informe a marca/modelo do veículo")
-      .max(40, "marca/modelo deve ter no máximo 40 caracteres"),
+      .max(40, "marca/modelo deve ter no máximo 40 caracteres")
+      .matches((/[A-Z][a-z]* [A-Z][a-z]*/), "As primeiras letras das palavras devem ser maiúscula"),
     placa: yup
       .string()
       .required("Informa a placa do veículo")
@@ -101,16 +102,13 @@ export default function Editar({ navigation, route }) {
   const put = async (car) => {
     let cont = 0
     try {
-      veiculo.modelo = car.modelo.toUpperCase();
-      veiculo.placa = car.placa.toUpperCase();
-      veiculo.cor = car.cor.toUpperCase();
-      veiculo.renavam = car.renavam;
-      veiculo.ano = car.ano;
-      cont = await Api.editarVeiculo(veiculo);
+      car.fk_Cliente = veiculo.fk_Cliente
+      car.id = veiculo.id
+      cont = await Api.editarVeiculo(car);
     } catch (err) {
       return console.error("Erro ao transmitir dados: " + err);
     }
-    if(cont == 0) return navigation.navigate("ListarVeiculos");
+    if(cont == 0) return navigation.navigate("Menu");
   };
 
   return (

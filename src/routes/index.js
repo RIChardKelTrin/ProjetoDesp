@@ -14,6 +14,7 @@ import EditarVeiculos from '../Veiculo/Pages/Editar/';
 import VeiculoServico from '../VeiculoServico/Pages/Home';
 import CadastrarServico from '../Servico/Pages/Cadastrar';
 import ListarServico from '../Servico/Pages/Listar';
+import ListarsServico from '../Servico/Pages/Listars'
 import EditarServico from '../Servico/Pages/Editar';
 import DeletarServico from '../Servico/Pages/Deletar';
 
@@ -67,6 +68,9 @@ export default function Routes() {
             <Stack.Screen
                 name="ListarVeiculos"
                 component={ListarVeiculos}
+                options={{
+                    headerShown:false
+                  }}
             />
             <Stack.Screen
                 name="EditarVeiculos"
@@ -85,8 +89,8 @@ export default function Routes() {
                 component={EditarServico}
             />
             <Stack.Screen
-                name="ListarServico"
-                component={ListarServico}
+                name="ListarsServico"
+                component={ListarsServico}
             />
             <Stack.Screen
                 name="DeletarServico"

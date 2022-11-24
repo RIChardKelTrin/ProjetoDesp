@@ -26,7 +26,6 @@ export default function Deletar({ navigation }) {
   });
 
   const handleSignIn = async (data) => {
-    console.log(data);
     try {
       await api.DeleteServico(data.id);
     } catch (erro) {
@@ -59,7 +58,7 @@ export default function Deletar({ navigation }) {
       <View style={styles.botoes}>
         <TouchableOpacity
           style={styles.Botao}
-          onPress={() => navigation.navigate("Listar")}
+          onPress={() => navigation.navigate("Menu")}
         >
           <Text style={styles.texto}>Voltar</Text>
         </TouchableOpacity>

@@ -91,7 +91,7 @@ export default function Editar({ navigation }) {
       <View style={styles.botoes}>
         <TouchableOpacity
           style={styles.Botao}
-          onPress={() => navigation.navigate("Listar")}
+          onPress={() => navigation.navigate("Menu")}
         >
           <Text style={styles.texto}>Voltar</Text>
         </TouchableOpacity>

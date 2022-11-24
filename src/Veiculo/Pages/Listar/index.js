@@ -53,12 +53,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#191919',
-        alignContent: 'center',
+
+        alignItems:'center'
     },
     texto: {
         fontSize: 20,
         textAlign: 'center',
         color: '#f70b17'
-    }
+    },
+
 });
 

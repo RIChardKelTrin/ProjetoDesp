@@ -88,7 +88,7 @@ export default function PopupAcao({ navigation, veiculo, detalhar }) {
                 <Text style={styles.texto}>Editar</Text>
                 <Icon name="pencil" style={styles.texto} />
               </TouchableOpacity>
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 style={styles.botao}
                 onPress={() => {
                   ExcluirVeiculo();
@@ -96,7 +96,7 @@ export default function PopupAcao({ navigation, veiculo, detalhar }) {
               >
                 <Text style={styles.texto}>Excluir</Text>
                 <Icon2 name="delete" style={styles.texto}></Icon2>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </Animated.View>
           </SafeAreaView>
       </Modal>
