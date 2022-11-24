@@ -1,8 +1,4 @@
 import React from 'react';
-import Welcome from '../Pages/Login/Welcome';
-import Login from '../Pages/Login/index';
-import Menu from '../Pages/Menu/index';
-import Home from '../Pages/Home/index'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CadastroCliente from '../Cliente/Pages/Cadastro/index';
 import ListarCliente from '../Cliente/Pages/Listar';
