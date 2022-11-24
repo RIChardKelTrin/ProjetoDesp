@@ -13,7 +13,6 @@ import ListarVeiculos from '../Veiculo/Pages/Listar/index';
 import EditarVeiculos from '../Veiculo/Pages/Editar/';
 import VeiculoServico from '../VeiculoServico/Pages/Home';
 import CadastrarServico from '../Servico/Pages/Cadastrar';
-import ListarServico from '../Servico/Pages/Listar';
 import ListarsServico from '../Servico/Pages/Listars'
 import EditarServico from '../Servico/Pages/Editar';
 import DeletarServico from '../Servico/Pages/Deletar';
@@ -53,14 +52,23 @@ export default function Routes() {
             <Stack.Screen
                 name="ListarCliente"
                 component={ListarCliente}
+                options={{
+                    headerShown:false
+                  }}
             />
             <Stack.Screen
                 name="EditarCliente"
                 component={EditarCliente}
+                options={{
+                    headerShown:false
+                  }}
             />
             <Stack.Screen
                 name="ExcluirCliente"
                 component={ExcluirCliente}
+                options={{
+                    headerShown:false
+                  }}
             />
             <Stack.Screen
                 name="CadastrarVeiculo"
@@ -77,30 +85,51 @@ export default function Routes() {
             <Stack.Screen
                 name="EditarVeiculos"
                 component={EditarVeiculos}
+                options={{
+                    headerShown:false
+                  }}
             />
             <Stack.Screen
                 name="VeiculoServico"
                 component={VeiculoServico}
+                options={{
+                    headerShown:false
+                  }}
             />
             <Stack.Screen
                 name="CadastrarServico"
                 component={CadastrarServico}
+                options={{
+                    headerShown:false
+                  }}
             />
             <Stack.Screen
                 name="EditarServico"
                 component={EditarServico}
+                options={{
+                    headerShown:false
+                  }}
             />
             <Stack.Screen
                 name="ListarsServico"
                 component={ListarsServico}
+                options={{
+                    headerShown:false
+                  }}
             />
             <Stack.Screen
                 name="DeletarServico"
                 component={DeletarServico}
+                options={{
+                    headerShown:false
+                  }}
             />
             <Stack.Screen
                 name="EscolherServico"
                 component={EscolherServico}
+                options={{
+                    headerShown:false
+                  }}
             />
 
 
