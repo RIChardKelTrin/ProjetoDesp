@@ -62,21 +62,24 @@ export default function Cadastrar({ navigation, route }) {
 
   const post = async (car) => {
     let cont = 0;
+    let response
     try {
       car.fk_Cliente = cliente
-      console.log(car)
-      cont = await Api.addVeiculos(car);
+      response = await Api.addVeiculos(car);
     } catch (err) {
-      return alert("Erro ao transmitir dados: " + err);
+      alert("Erro ao transmitir dados: " + err);
+      cont ++
     }
-    if (cont == 0) return navigation.navigate("CadastrarServico");
+    if (cont == 0 && typeof response.data == "object") {
+      return navigation.navigate("EscolherServico", {veiculo: response.data});
+    }
   };
 
   const list = [
     {
       nome: "modelo",
       label:"Marca/Modelo:",
-      ph: "Ex: Volksvagem Gol",
+      ph: "Ex: Volkswagem Gol",
       maxSize: 40,
       error: errors.modelo
     },

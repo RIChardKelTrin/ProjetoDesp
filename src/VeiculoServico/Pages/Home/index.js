@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, StyleSheet, Text, View } from "react-native";
 import Header from "../../../Veiculo/Components/Header";
 import Itens from "../../Components/Itens";
@@ -16,16 +16,20 @@ export default function Home(){
         setTimeout(() => {setSVs(itens), setSemResposta(false)}, 1000)
         
     }
+
+    const loadEdit = () =>{
+        setLoad(!load)
+    }
     
     return(
         <View style={styles.container}>
             <Header/>
-            <Search callback={getSVs}/>
+            <Search callback={getSVs} loadEdit={load}/>
             {(SVs.length > 0) ?
             <FlatList
             data={SVs}
             keyExtractor={item => item.id}
-            renderItem={({item}) => <Itens data={item}/>}
+            renderItem={({item}) => <Itens data={item} callback={loadEdit}/>}
             />
             :
             semResposta ?

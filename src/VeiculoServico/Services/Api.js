@@ -19,6 +19,15 @@ const getSvById = async (nomeSituacao) => {
     return sv
 }
 
+const addSV = async (veiculo, servico) => {
+    await api.post(url,{
+        fk_Veiculo: veiculo.id,
+        fk_Servico: servico.id
+    })
+    .then(response => response)
+    .catch(err => console.log("erro ao cadastrar SV: " + erro))
+}
+
 const EditaSituacaoSV = async (sv) => {
     await api.put(url + "/" + sv.id, {
         id: sv.id,
@@ -28,7 +37,10 @@ const EditaSituacaoSV = async (sv) => {
         dataDeEntrada: sv.dataDeEntrada
     })
     .then(response => response)
-    .catch(erro => console.log("Erro ao editar situacao do sv: " + erro))
+    .catch(erro => {
+        console.log("Erro ao editar situacao do sv: " + erro)
+        throw "Error"
+    })
 }
 
-export default { getSvById, EditaSituacaoSV }
+export default { getSvById, EditaSituacaoSV, addSV }

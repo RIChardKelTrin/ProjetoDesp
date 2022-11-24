@@ -10,10 +10,13 @@ import { Feather } from "@expo/vector-icons";
 import React, { Component, useEffect, useState } from "react";
 import Api from "../../Services/Api";
 
-export default function Search({ callback }) {
+export default function Search({ callback, loadEdit }) {
   const [situacao, setSituacao] = useState("");
+  const [load, setLoad] = useState(false)
 
-
+  useEffect(() => {
+    get()
+  },[loadEdit])
 
   const get = async () => {
     try {

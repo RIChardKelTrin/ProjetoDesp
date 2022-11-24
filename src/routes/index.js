@@ -17,6 +17,8 @@ import ListarServico from '../Servico/Pages/Listar';
 import ListarsServico from '../Servico/Pages/Listars'
 import EditarServico from '../Servico/Pages/Editar';
 import DeletarServico from '../Servico/Pages/Deletar';
+import EscolherServico from '../Servico/Pages/Escolher';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -95,6 +97,10 @@ export default function Routes() {
             <Stack.Screen
                 name="DeletarServico"
                 component={DeletarServico}
+            />
+            <Stack.Screen
+                name="EscolherServico"
+                component={EscolherServico}
             />
 
 

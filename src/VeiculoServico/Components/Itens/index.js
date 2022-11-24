@@ -12,8 +12,9 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/Entypo";
 import Api from "../../Services/Api";
+import { get } from "react-hook-form";
 
-export default function Itens({ data }) {
+export default function Itens({ data, callback }) {
   const [visible, setVisible] = useState(false);
   const [date, SetDate] = useState(data.dataDeEntrada);
   const [veiculo, setVeiculo] = useState(data.veiculo);
@@ -32,10 +33,17 @@ export default function Itens({ data }) {
     return diaF + "/" + mesF + "/" + anoF;
   };
 
-  const put = async(situacaoID) =>{
-    let sv = data
-    sv.fk_Situacao = situacaoID
-    await Api.EditaSituacaoSV(sv)
+  const put = async(situacaoID) => {
+    let cont = 0
+    try{
+      let sv = data
+      sv.fk_Situacao = situacaoID
+      await Api.EditaSituacaoSV(sv)
+    }catch(erro){ 
+      console.log("Erro ao editar Sv" + erro)
+      cont++
+    }
+      if(cont == 0) callback()
   }
 
   const defineCor = () => {
@@ -80,6 +88,9 @@ export default function Itens({ data }) {
           </Ionicons>
           <Ionicons name="car" size={14} color="red" style={styles.icon}>
             <Text style={styles.Text}> {veiculo.placa}</Text>
+          </Ionicons>
+          <Ionicons name="build" size={14}style={styles.icon}>
+            <Text style={styles.Text}> {servico.nome}</Text>
           </Ionicons>
           <Ionicons name="cash" size={14} color="green" style={styles.icon}>
             <Text style={styles.Text}> R${servico.valor}</Text>

@@ -32,9 +32,7 @@ const getVeiculosByPlaca = async (placa) => {
 };
 
 const addVeiculos = async (veiculo) => {
-  let cont = 0;
-
-  await api
+  return await api
     .post(url, {
       marcaModelo: veiculo.modelo,
       placa: veiculo.placa,
@@ -44,17 +42,15 @@ const addVeiculos = async (veiculo) => {
       fk_cliente: veiculo.fk_Cliente,
     })
     .then((response) => response)
-
     .catch((err) => {
       if (err.toString().includes("403")) {
-        alert(`Renavam/Placa já cadastrado em outro veículo!`);
-        cont = 1;
+        console.log(`Renavam/Placa já cadastrado em outro veículo!`);
+        throw 'Error'
       } else {
-        console.error("Erro ao cadastrar: " + err);
-        cont = 3;
+          console.log("Erro ao cadastrar: " + err);
+          throw 'Erro ao cadastrar veiculo'
       }
     });
-  return cont;
 };
 
 const editarVeiculo = async (veiculo) => {

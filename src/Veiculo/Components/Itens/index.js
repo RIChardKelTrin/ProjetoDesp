@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
   SafeAreaView,
+  Easing,
 } from "react-native";
 import PopupAcao from "../PopupAcao";
 
@@ -109,32 +110,40 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor:"#fff"
+    backgroundColor:"#191919",
+    marginStart:10,
+    marginEnd:10,
+    marginBottom:5
   },
   acao: {
     width: "10%",
     justifyContent: "center",
     backgroundColor: "#fff",
     alignItems: "center",
+    borderTopEndRadius: 8,
+    borderBottomEndRadius: 8
   },
   content: {
     height: 72,
-    width: "90%",
     backgroundColor: "#fff",
     flexDirection: "column",
     justifyContent: "center",
+    borderTopLeftRadius: 8,
+    borderBottomLeftRadius: 8
   },
   expandir: {
-    width: "90%",
     backgroundColor: "#fff",
     flexDirection: "column",
+    borderTopLeftRadius: 8,
+    borderBottomLeftRadius: 8,
+  
   },
   teste: {
     flexDirection: "row",
     margin: 5,
   },
   label: {
-    width: "33.3%",
+    width: "30%",
     flexDirection: "column",
   },
   title: {
