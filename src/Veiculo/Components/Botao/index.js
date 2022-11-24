@@ -8,7 +8,7 @@ export default function Botao({navigation}){
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.fundo} activeOpacity={0.3} onPress={ () => navigation.navigate('Cadastrar')}>
+            <TouchableOpacity style={styles.fundo} activeOpacity={0.3} onPress={ () => navigation.navigate('CadastrarVeiculo')}>
                 <View>
                     <Feather name="plus" color={'white'} size={45} />
                 </View>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Header from './../Pages/Components/Header';
+import Header from '../Pages/Components/Header';
 import Marca from './../Cliente/Components/Marca'
 import { FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -25,9 +25,6 @@ export default function Veiculos() {
       <View style={styles.container}>
         <TouchableOpacity style={styles.buttonTouch} onPress={() => navigation.navigate('ListarVeiculos')}>
           <Text style={styles.TextTitulo}><FontAwesome5 name="list-alt" size={18} color="white" /> LISTA DE VEÍCULOS</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonTouch} onPress={() => navigation.navigate('EditarVeiculos')}>
-          <Text style={styles.TextTitulo}><MaterialCommunityIcons name="car-wrench" size={24} color="white" /> EDITAR VEÍCULO</Text>
         </TouchableOpacity>
       </View>
       <Marca></Marca>

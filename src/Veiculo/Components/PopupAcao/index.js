@@ -80,7 +80,7 @@ export default function PopupAcao({ navigation, veiculo, detalhar }) {
               <TouchableOpacity
                 style={styles.botao}
                 onPress={() =>
-                  navigation.navigate("Editar", {
+                  navigation.navigate("EditarVeiculos", {
                     veiculo: veiculo,
                   })
                 }

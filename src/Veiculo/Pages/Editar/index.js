@@ -110,7 +110,7 @@ export default function Editar({ navigation, route }) {
     } catch (err) {
       return console.error("Erro ao transmitir dados: " + err);
     }
-    if(cont == 0) return navigation.navigate("Listar");
+    if(cont == 0) return navigation.navigate("ListarVeiculos");
   };
 
   return (
@@ -147,7 +147,7 @@ export default function Editar({ navigation, route }) {
         <View style={styles.botoes}>
           <TouchableOpacity
             style={styles.enviar}
-            onPress={() => navigation.navigate("Listar")}
+            onPress={() => navigation.navigate("ListarVeiculos")}
           >
             <Text style={styles.nomeEnviar}>Voltar</Text>
           </TouchableOpacity>

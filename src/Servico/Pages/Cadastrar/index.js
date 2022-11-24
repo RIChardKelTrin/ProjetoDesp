@@ -19,13 +19,16 @@ export default function Cadastrar({ navigation }) {
     handleSubmit,
     formState: { errors },
   } = useForm({});
+
   async function handleSignIn(data) {
+    let cont = 0
     console.log(data);
     try {
-      await api.addServicos(data);
+      cont = await api.addServicos(data);
     } catch (erro) {
       console.log("erro no formulário: ", erro);
     }
+    if(cont == 0 ) navigation.navigate("Listar")
   }
 
   return (

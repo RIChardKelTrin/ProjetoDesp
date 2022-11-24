@@ -1,8 +1,10 @@
 import axios from "axios";
+import ip from "../../config/ip";
 
 let url = '/veiculoservico';
 const api = axios.create({
-    baseURL: 'http://192.168.15.46:5001/api'
+    baseURL: `http://${ip}:5001/api`
+
 })
 
 const getSvById = async (nomeSituacao) => {

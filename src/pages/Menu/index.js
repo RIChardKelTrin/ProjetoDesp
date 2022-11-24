@@ -3,7 +3,7 @@ import { StyleSheet} from 'react-native';
 import Servico from "../../Servico/index";
 import Cliente from "../../Cliente/index";
 import Veiculos from "../../Veiculo/index";
-import Logout from "../Menu/logout"
+import Logout from "./logout"
 import Home from "../Home/index";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';

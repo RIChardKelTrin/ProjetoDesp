@@ -1,8 +1,8 @@
 import axios  from "axios"
+import ip from "../config/ip"
 
 const api = axios.create({
-    // baseURL: 'http://192.168.1.3:5001/api'
-    baseURL: 'http://192.168.15.46:5001/api'
+    baseURL: `http://${ip}:5001/api`
 
 })
 
@@ -18,14 +18,15 @@ const getServicos = async() => {
 }
 
 const addServicos = async(servico) => {
+    let cont = 0;
     await api.post("/servicos", {
         nome: servico.nome,
         valor: servico.valor,
         
     })
     .then(response => response)
-    .catch(err => console.log("erro ao cadastrar: ", err))
-
+    .catch(err => {console.log("erro ao cadastrar: ", err), cont++})
+    return cont
 }
 
 

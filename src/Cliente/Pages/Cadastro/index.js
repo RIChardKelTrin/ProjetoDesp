@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState }from "react";
 import { ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View, KeyboardAvoidingView } from "react-native";
 import enviar from "../../Services/api";
 import { useForm, Controller } from 'react-hook-form'
@@ -24,6 +24,8 @@ export default function Cadastro() {
         resolver: yupResolver(schema)
     })
 
+    const [Cliente, setCliente] = useState([])
+
 
     const AddCliente = async (cliente) => {
                 let cont = 0;
@@ -34,7 +36,7 @@ export default function Cadastro() {
                 endereco: cliente.endereco,
                 telefone: cliente.telefone
             })
-            .then(response=>response) 
+            .then(response => {setCliente(response.data), console.log(Cliente)}) 
             .catch(erro => {
                 if (erro.toString().includes("403")) {
                     console.log("Erro CPF Duplicado")
@@ -50,7 +52,7 @@ export default function Cadastro() {
             if(cont == 0) {
                 console.log(cont)
                 console.log("Cadastrado com sucesso!"), alert("Cliente Cadastrado com sucesso!")
-                return navigation.navigate("Menu");
+                return navigation.navigate("CadastrarVeiculo",{ cliente: Cliente});
             }
     }
 

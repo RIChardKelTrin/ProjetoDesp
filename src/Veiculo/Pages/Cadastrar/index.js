@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StatusBar,
   StyleSheet,
@@ -14,7 +14,7 @@ import * as yup from "yup";
 import Header from "../../Components/Header";
 
 
-export default function Cadastrar({ navigation }) {
+export default function Cadastrar({ navigation, route }) {
   const schema = yup.object({
     modelo: yup
       .string()
@@ -53,7 +53,11 @@ export default function Cadastrar({ navigation }) {
     resolver: yupResolver(schema),
   });
 
-  const [clienteId, setClienteId] = useState(1);
+
+  useEffect(() =>{
+    console.log(cliente)
+  },[cliente])
+  const [cliente, setCliente] = useState(route.params.cliente);
 
   const post = async (car) => {
     let cont = 0;
@@ -63,12 +67,12 @@ export default function Cadastrar({ navigation }) {
       car.cor = car.cor.toUpperCase();
       car.renavam = car.renavam;
       car.ano = car.ano;
-      car.fk_Cliente = clienteId;
+      car.fk_Cliente = cliente.id;
       cont = await Api.addVeiculos(car);
     } catch (err) {
       return alert("Erro ao transmitir dados: " + err);
     }
-    if (cont == 0) return navigation.navigate("Listar");
+    if (cont == 0) return navigation.navigate("CadastrarServico");
   };
 
   const list = [
@@ -143,7 +147,7 @@ export default function Cadastrar({ navigation }) {
         <View style={styles.botoes}>
           <TouchableOpacity
             style={styles.enviar}
-            onPress={() => navigation.navigate("Listar")}
+            onPress={() => navigation.navigate("ListarVeiculos")}
           >
             <Text style={styles.nomeEnviar}>Voltar</Text>
           </TouchableOpacity>

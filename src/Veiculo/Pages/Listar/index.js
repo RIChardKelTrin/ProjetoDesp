@@ -45,8 +45,6 @@ export default function Listar({ navigation }) {
                     :
                     <Text style={styles.texto}>Nenhum Veículo encontrado!</Text>
             }
-
-            <Botao navigation={navigation} />
         </View>
     );
 }
@@ -55,7 +53,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#191919',
-        justifyContent: 'center',
         alignContent: 'center',
     },
     texto: {
